@@ -23,6 +23,9 @@ app.use('/staff', staffRoutes);
 app.use('/time-out', timeOutRoute);
 app.use('/time-in', timeInRoute);
 app.use('/admin-login', loginRoute);
+app.get("/", (req, res) => {
+    res.send("welcome to sbca server");
+});
 
 const httpServer = http.createServer(app);
 const io = new Server(httpServer, {
