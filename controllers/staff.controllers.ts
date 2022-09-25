@@ -4,7 +4,17 @@ import { RequestError } from "@utils/request";
 import { Request } from "express";
 
 const staffControllers = {
-
+    patch: async (req: Request) => {
+        const payload: IStaff = req.body;
+        delete (payload as any)._id;
+        delete payload.photo;
+        const db = await getDbConnection();
+        const { Staff } = db.models;
+        const staff = await Staff.findByRfid(payload.rfid);
+        if (!staff) throw new RequestError(404, "Staff not found");
+        const updated = await Staff.updateOne({ rfid: payload.rfid }, payload);
+        return updated;
+    },
     getAll: async (req: Request) => {
         const db = await getDbConnection();
         const { Staff } = db.models;
