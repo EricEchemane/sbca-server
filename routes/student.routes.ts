@@ -10,5 +10,6 @@ studentRoutes.get("/:rfid", normalize(studentControllers.getByRfid));
 studentRoutes.get("/get/all", normalize(studentControllers.getAll));
 studentRoutes.post("/", normalize(studentControllers.create));
 studentRoutes.patch("/", normalize(studentControllers.patch));
+studentRoutes.delete("/", normalize(studentControllers.deleteByRfid));
 
 export default studentRoutes;

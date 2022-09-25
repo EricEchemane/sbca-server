@@ -4,6 +4,14 @@ import { RequestError } from "@utils/request";
 import { Request } from "express";
 
 const studentControllers = {
+    deleteByRfid: async (req: Request) => {
+        const { rfid } = req.body;
+        const db = await getDbConnection();
+        const { Student } = db.models;
+        const deleted = await Student.deleteOne({ rfid });
+        if (deleted && deleted.deletedCount === 1) return true;
+        throw new RequestError(404, "Student not found");
+    },
     patch: async (req: Request) => {
         const payload: IStudent = req.body;
         delete (payload as any)._id;
