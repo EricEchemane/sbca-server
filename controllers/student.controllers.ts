@@ -4,6 +4,17 @@ import { RequestError } from "@utils/request";
 import { Request } from "express";
 
 const studentControllers = {
+    patch: async (req: Request) => {
+        const payload: IStudent = req.body;
+        delete (payload as any)._id;
+        delete payload.photo;
+        const db = await getDbConnection();
+        const { Student } = db.models;
+        const student = await Student.findByRfid(payload.rfid);
+        if (!student) throw new RequestError(404, "Student not found");
+        const updated = await Student.updateOne({ rfid: payload.rfid }, payload);
+        return updated;
+    },
     getAll: async (req: Request) => {
         const db = await getDbConnection();
         const { Student } = db.models;
