@@ -30,7 +30,7 @@ const StaffSchema = new mongoose.Schema({
         type: String,
     },
     birthDate: {
-        type: Date,
+        type: String,
         required: [true, "Please add a birth date"],
     },
     photo: {
