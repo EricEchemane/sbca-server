@@ -8,5 +8,6 @@ staffRoutes.post("/time-out", normalize(staffControllers.timeOut));
 staffRoutes.get("/:rfid", normalize(staffControllers.getByRfid));
 staffRoutes.get("/get/all", normalize(staffControllers.getAll));
 staffRoutes.post("/", normalize(staffControllers.create));
+staffRoutes.patch("/", normalize(staffControllers.patch));
 
 export default staffRoutes;
