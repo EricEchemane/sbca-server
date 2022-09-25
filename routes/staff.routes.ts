@@ -9,5 +9,6 @@ staffRoutes.get("/:rfid", normalize(staffControllers.getByRfid));
 staffRoutes.get("/get/all", normalize(staffControllers.getAll));
 staffRoutes.post("/", normalize(staffControllers.create));
 staffRoutes.patch("/", normalize(staffControllers.patch));
+staffRoutes.delete("/", normalize(staffControllers.deleteByRfid));
 
 export default staffRoutes;

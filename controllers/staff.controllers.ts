@@ -4,6 +4,14 @@ import { RequestError } from "@utils/request";
 import { Request } from "express";
 
 const staffControllers = {
+    deleteByRfid: async (req: Request) => {
+        const { rfid } = req.body;
+        const db = await getDbConnection();
+        const { Staff } = db.models;
+        const deleted = await Staff.deleteOne({ rfid });
+        if (deleted && deleted.deletedCount === 1) return true;
+        throw new RequestError(404, "Staff not found");
+    },
     patch: async (req: Request) => {
         const payload: IStaff = req.body;
         delete (payload as any)._id;
