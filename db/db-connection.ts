@@ -1,3 +1,4 @@
+import Guest from "@entities/guest.model";
 import Staff from "@entities/staff.model";
 import Student from "@entities/student.model";
 import mongoose from "mongoose";
@@ -20,6 +21,7 @@ export default async function getDbConnection(): Promise<DB> {
     db = (await mongoose.connect(uri, { dbName: 'rfid' })) as DB;
     db.models.Student = Student;
     db.models.Staff = Staff;
+    db.models.Guest = Guest;
 
     return db as DB;
 }
