@@ -6,7 +6,7 @@ const GuestSchema = new mongoose.Schema({
         required: [true, "Your name is required"],
         minLength: [2, "name must be at least 2 characters"]
     },
-    pusposeOfVisit: {
+    purposeOfVisit: {
         type: String,
         required: [true, "Please specify a purpose of visit"],
     },
