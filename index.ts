@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 4000;
 
 const app = express();
 
-app.use(cors({ origin: 'https://sbca.vercel.app/' }));
+app.use(cors({ origin: 'https://sbca.vercel.app' }));
 app.use(express.json({ limit: '50mb' }));
 
 // routes
